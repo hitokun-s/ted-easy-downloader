@@ -32,7 +32,7 @@ def talkUrlList = elms.findAll{
 println talkUrlList
 
 def downloadListFile = new File('downloadList')
-def ls = System.getProperty('line.separator')
+def ls = System.lineSeparator()
 
 def exec = { url ->
     driver.get(url)
