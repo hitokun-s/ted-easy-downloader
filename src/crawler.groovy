@@ -29,7 +29,7 @@ def talkUrlList = elms.findAll{
     it.getAttribute('href').startsWith('https://www.ted.com/talks/')
 }.collect{it.getAttribute('href')}.unique()
 
-println talkUrlList
+println "collected movie counts : ${talkUrlList}"
 
 def downloadListFile = new File('downloadList')
 def ls = System.lineSeparator()
@@ -45,12 +45,11 @@ def exec = { url ->
     // select subtitle language
     try{
         new Select(driver.findElementByClassName('talk-download__language')).selectByVisibleText(conf["selector-lang"])
+        downloadListFile <<  driver.findElementByClassName('talk-download__button--video').getAttribute('href') + ls
     }catch(Exception e){
         // Especially for the newest movie, there is no selection on subtitle selector
         println e
-        return
     }
-    downloadListFile <<  driver.findElementByClassName('talk-download__button--video').getAttribute('href') + ls
 }
 
 talkUrlList.each(exec)
