@@ -1,4 +1,5 @@
 import groovy.json.JsonSlurper
+
 @Grab(group='org.seleniumhq.selenium', module='selenium-firefox-driver', version='2.46.0')
 @Grab(group='org.seleniumhq.selenium', module='selenium-support', version='2.46.0')
 
@@ -9,12 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.support.ui.WebDriverWait
 
-
 def conf = new JsonSlurper().parseText(new File("config.json").text)
 assert conf.lang
 assert conf["selector-lang"]
 assert conf.page
-
 
 // How to resolve classes by @grab:
 // if some class cannot be resolved on IDEA, please push alt + enter, and select 'grab',
