@@ -7,6 +7,7 @@ Groovy command line tool to download TED movies.
 ### Prerequisites
 
 - Groovy(including Grape)
+- FireFox (You can change this with a small modification of code)
 
 ### Procedure
 
